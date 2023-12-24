@@ -30,7 +30,6 @@ export default function Form() {
           label="end-date-education"
           labelText="To:"
           min="1930-01-01"
-          max={new Date().toISOString().split("T")[0]}
         ></Input>
       </fieldset>
       <fieldset>
