@@ -1,4 +1,7 @@
 export default function CV({ formData }) {
+  function formatResponsibilities(responsibilities) {
+    return responsibilities.split("\n");
+  }
   return (
     <>
       <section>
@@ -22,7 +25,13 @@ export default function CV({ formData }) {
         <h1>Practical Experience</h1>
         <h2>{formData.companyName || "Company Name"}</h2>
         <h2>Responsibilities</h2>
-        <ul>{formData.responsibilities}</ul>
+        <ul>
+          {formatResponsibilities(formData.responsibilities).map(
+            (responsibility,key) => (
+              <li key={key}>{responsibility}</li>
+            )
+          )}
+        </ul>
         <h3>From:</h3>
         <time>{formData.practicalExperienceStartDate || "year:month:day"}</time>
         <h3>To:</h3>
