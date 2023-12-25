@@ -1,16 +1,22 @@
-@import url('https://fonts.googleapis.com/css?family=Noto%20Sans%20KR:700|Noto%20Sans%20KR:400');
+@import url("https://fonts.googleapis.com/css?family=Noto%20Sans%20KR:700|Noto%20Sans%20KR:400");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
+:root {
+  --text: #110b09;
+  --background: #fbf9f9;
+  --primary: #ae6f6b;
+  --secondary: #a3ccbf;
+  --accent: #859ebc;
+}
 h1,
 h2,
 h3,
 h4,
 h5 {
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
   font-weight: 700;
 }
 
@@ -34,16 +40,18 @@ small {
   font-size: 0.75rem; /* 12px */
 }
 button {
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
   font-weight: 400;
   font-size: 1rem;
 }
 body {
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
   font-weight: 400;
   display: grid;
   justify-content: center;
   align-content: center;
+  background-color: var(--background);
+  color: var(--text);
 }
 main {
   display: flex;
@@ -54,8 +62,13 @@ main {
 
 form {
   max-width: 400px;
+  border: 1px solid black;
 }
 
+fieldset {
+  border: none;
+  padding: 10px;
+}
 label {
   display: block;
 }
@@ -63,6 +76,10 @@ label {
 .cv {
   display: flex;
   flex-direction: column;
+  background-color: var(--primary);
+  padding: 20px;
+  border-radius: 10px;
+
 }
 .cv > section {
   display: flex;
@@ -71,7 +88,21 @@ label {
 }
 .cv button {
   padding: 10px 0;
+  background-color: var(--secondary);
+  
 }
 .cv a {
+  font-size: 1.3rem;
   display: block;
+  text-decoration: none;
+  color: var(--text);
+}
+.cv a:visited{
+  color: var(--text);
+}
+.cv ul {
+  list-style: none;
+}
+.cv time{
+  font-size: 1.3rem;
 }
