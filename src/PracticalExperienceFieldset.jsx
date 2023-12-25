@@ -1,7 +1,12 @@
 import { useState } from "react";
 import Input from "./Input";
 
-export default function PracticalExperienceFieldset({ formData, setFormData }) {
+export default function PracticalExperienceFieldset({
+  formData,
+  setFormData,
+  edit,
+  setEdit,
+}) {
   const [practicalExperienceData, setPracticalExperienceData] = useState({
     companyName: "",
     responsibilities: "",
@@ -18,15 +23,26 @@ export default function PracticalExperienceFieldset({ formData, setFormData }) {
       practicalExperienceEndDate: "",
     });
   }
+  function turnEditOff() {
+    setEdit(false);
+    setPracticalExperienceData({
+      companyName: formData.companyName,
+      responsibilities: formData.responsibilities,
+      practicalExperienceStartDate: formData.practicalExperienceStartDate,
+      practicalExperienceEndDate: formData.practicalExperienceEndDate,
+    });
+  }
   return (
     <>
-      <fieldset>
+      <fieldset onFocus={edit ? turnEditOff : null}>
         <legend>Practical Experience</legend>
         <Input
           type="text"
           label="companyName"
           labelText="Company Name:"
-          value={practicalExperienceData.companyName}
+          value={
+            edit ? formData.companyName : practicalExperienceData.companyName
+          }
           handleChange={(e) =>
             setPracticalExperienceData({
               ...practicalExperienceData,
@@ -42,7 +58,11 @@ export default function PracticalExperienceFieldset({ formData, setFormData }) {
           id="responsibilities"
           cols="30"
           rows="10"
-          value={practicalExperienceData.responsibilities}
+          value={
+            edit
+              ? formData.responsibilities
+              : practicalExperienceData.responsibilities
+          }
           onChange={(e) =>
             setPracticalExperienceData({
               ...practicalExperienceData,
@@ -56,7 +76,11 @@ export default function PracticalExperienceFieldset({ formData, setFormData }) {
           labelText="From:"
           min="1930-01-01"
           max={new Date().toISOString().split("T")[0]}
-          value={practicalExperienceData.practicalExperienceStartDate}
+          value={
+            edit
+              ? formData.practicalExperienceStartDate
+              : practicalExperienceData.practicalExperienceStartDate
+          }
           handleChange={(e) =>
             setPracticalExperienceData({
               ...practicalExperienceData,
@@ -70,7 +94,11 @@ export default function PracticalExperienceFieldset({ formData, setFormData }) {
           labelText="To:"
           min="1930-01-01"
           max={new Date().toISOString().split("T")[0]}
-          value={practicalExperienceData.practicalExperienceEndDate}
+          value={
+            edit
+              ? formData.practicalExperienceEndDate
+              : practicalExperienceData.practicalExperienceEndDate
+          }
           handleChange={(e) =>
             setPracticalExperienceData({
               ...practicalExperienceData,

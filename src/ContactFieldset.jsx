@@ -1,13 +1,19 @@
 import { useState } from "react";
 import Input from "./Input";
 
-export default function ContactFieldset({ formData, setFormData }) {
+export default function ContactFieldset({
+  formData,
+  setFormData,
+  edit,
+  setEdit,
+}) {
   const [contactData, setContactData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phoneNumber: "",
   });
+
   function handleSubmit(e) {
     e.preventDefault();
     setFormData({ ...formData, ...contactData });
@@ -18,15 +24,26 @@ export default function ContactFieldset({ formData, setFormData }) {
       phoneNumber: "",
     });
   }
+
+  function turnEditOff() {
+    setEdit(false);
+    setContactData({
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      phoneNumber: formData.phoneNumber,
+    });
+  }
+
   return (
     <>
-      <fieldset>
+      <fieldset onFocus={edit ? turnEditOff : null}>
         <legend>General Information</legend>
         <Input
           type="text"
           label="firstName"
           labelText="First Name:"
-          value={contactData.firstName}
+          value={edit ? formData.firstName : contactData.firstName}
           handleChange={(e) =>
             setContactData({ ...contactData, firstName: e.target.value })
           }
@@ -35,7 +52,7 @@ export default function ContactFieldset({ formData, setFormData }) {
           type="text"
           label="lastName"
           labelText="Last Name:"
-          value={contactData.lastName}
+          value={edit ? formData.lastName : contactData.lastName}
           handleChange={(e) =>
             setContactData({ ...contactData, lastName: e.target.value })
           }
@@ -44,7 +61,7 @@ export default function ContactFieldset({ formData, setFormData }) {
           type="email"
           label="email"
           labelText="Email:"
-          value={contactData.email}
+          value={edit ? formData.email : contactData.email}
           handleChange={(e) =>
             setContactData({ ...contactData, email: e.target.value })
           }
@@ -53,7 +70,7 @@ export default function ContactFieldset({ formData, setFormData }) {
           type="tel"
           label="phoneNumber"
           labelText="Phone number:"
-          value={contactData.phoneNumber}
+          value={edit ? formData.phoneNumber : contactData.phoneNumber}
           handleChange={(e) =>
             setContactData({ ...contactData, phoneNumber: e.target.value })
           }

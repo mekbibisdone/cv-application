@@ -1,4 +1,5 @@
-export default function CV({ formData }) {
+export default function CV({ formData, handleEditClick }) {
+
   function formatResponsibilities(responsibilities) {
     return responsibilities.split("\n");
   }
@@ -27,7 +28,7 @@ export default function CV({ formData }) {
         <h2>Responsibilities</h2>
         <ul>
           {formatResponsibilities(formData.responsibilities).map(
-            (responsibility,key) => (
+            (responsibility, key) => (
               <li key={key}>{responsibility}</li>
             )
           )}
@@ -37,6 +38,7 @@ export default function CV({ formData }) {
         <h3>To:</h3>
         <time>{formData.practicalExperienceEndDate || "year:month:day"}</time>
       </section>
+      <button onClick={handleEditClick}>Edit</button>
     </>
   );
 }

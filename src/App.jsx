@@ -17,17 +17,23 @@ function App() {
     practicalExperienceStartDate: "",
     practicalExperienceEndDate: "",
   });
+  const [edit, setEdit] = useState(false);
+
+  function handleEditClick(e) {
+    e.preventDefault();
+    setEdit(true);
+  }
 
   return (
     <>
       <main>
         <section>
           <h1>Form</h1>
-          <Form formData={formData} setFormData={setFormData}></Form>
+          <Form formData={formData} setFormData={setFormData} edit={edit} setEdit={setEdit}></Form>
         </section>
         <section>
           <h1>CV</h1>
-          <CV formData={formData}></CV>
+          <CV formData={formData} handleEditClick={handleEditClick}></CV>
         </section>
       </main>
     </>
