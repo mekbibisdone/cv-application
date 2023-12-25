@@ -1,0 +1,41 @@
+* {
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  padding: 20px;
+}
+
+form {
+  max-width: 400px;
+}
+
+label {
+  display: block;
+}
+
+.cv {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.cv > section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.cv button {
+  padding: 10px 0;
+}
+.cv a {
+  display: block;
+}

@@ -1,3 +1,4 @@
+import "../styles/style.css"
 import Form from "./Form";
 import CV from "./CV";
 import { useState } from "react";
@@ -31,7 +32,7 @@ function App() {
           <h1>Form</h1>
           <Form formData={formData} setFormData={setFormData} edit={edit} setEdit={setEdit}></Form>
         </section>
-        <section>
+        <section className="cv">
           <h1>CV</h1>
           <CV formData={formData} handleEditClick={handleEditClick}></CV>
         </section>
